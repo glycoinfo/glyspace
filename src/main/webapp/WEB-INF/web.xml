@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+	<context-param>
+	    <param-name>contextConfigLocation</param-name>
+    	<param-value>classpath:springmvc-servlet.xml</param-value>
+	</context-param>
+	
+	<listener>
+    	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ 	</listener>
+ 	
+ 	<listener>
+	    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+  
+  <filter>
+    <filter-name>hibernateFilter</filter-name>
+    <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+    <init-param>
+        <param-name>sessionFactoryBeanName</param-name>
+        <param-value>sessionFactory</param-value>
+    </init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>hibernateFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+	  <filter-name>cors</filter-name>
+	  <filter-class>org.glyspace.registry.utils.CorsFilter</filter-class>
+	 </filter>
+	 
+	 <filter-mapping>
+	  <filter-name>cors</filter-name>
+	  <url-pattern>/*</url-pattern>
+	 </filter-mapping>
+	
+    <filter>
+	  	<filter-name>MDCInsertingServletFilter</filter-name>
+	  	<filter-class>
+	   		ch.qos.logback.classic.helpers.MDCInsertingServletFilter
+	   	</filter-class>
+	 </filter>
+	 <filter-mapping>
+	  	<filter-name>MDCInsertingServletFilter</filter-name>
+	  	<url-pattern>/*</url-pattern>
+	 </filter-mapping>  
+	 
+	 <filter>
+   		<filter-name>springSecurityFilterChain</filter-name>
+   		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+	   <filter-name>springSecurityFilterChain</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Need the following filter in order to be able to get the current user for each request for logging purposes -->
+	<filter>
+	  	<filter-name>UserServletFilter</filter-name>
+	  	<filter-class>
+	   		org.glyspace.registry.utils.UserServletFilter
+	   	</filter-class>
+	 </filter>
+	 <filter-mapping>
+	  	<filter-name>UserServletFilter</filter-name>
+	  	<url-pattern>/*</url-pattern>
+	 </filter-mapping> 
+ 
+  	<servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+                <param-name>contextConfigLocation</param-name>
+                <param-value>classpath:springmvc-servlet.xml</param-value>
+        </init-param>
+	</servlet>
+	
+	<servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	
+	<!--  Logback-access status servlet -->
+	<servlet>
+    	<servlet-name>AccessViewStatusMessages</servlet-name>
+    	<servlet-class>ch.qos.logback.access.ViewStatusMessagesServlet</servlet-class>
+  	</servlet>
+
+  	<servlet-mapping>
+    	<servlet-name>AccessViewStatusMessages</servlet-name>
+    	<url-pattern>/lbAccessStatus</url-pattern>
+  	</servlet-mapping>
+	
+
+	
+
+</web-app>

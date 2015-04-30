@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="combination-search" type="combinationSearch"/>
+
+  <xs:element name="composition" type="compositionSearchType"/>
+
+  <xs:element name="composition-search" type="compositionSearchInput"/>
+
+  <xs:element name="contributor-search" type="contributorSearchType"/>
+
+  <xs:element name="exact-search" type="exactSearchType"/>
+
+  <xs:element name="glycan-structure" type="glycan"/>
+
+  <xs:element name="id-search" type="idSearchType"/>
+
+  <xs:element name="substructure" type="substructureSearchType"/>
+
+  <xs:element name="user-input" type="user"/>
+
+  <xs:complexType name="idSearchType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="substructureSearchType">
+    <xs:sequence>
+      <xs:element ref="glycan-structure" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="glycan">
+    <xs:sequence>
+      <xs:element name="structure" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="encoding" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="contributorSearchType">
+    <xs:sequence>
+      <xs:element ref="user-input" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="user">
+    <xs:sequence/>
+    <xs:attribute name="affiliation" type="xs:string"/>
+    <xs:attribute name="email" type="xs:string"/>
+    <xs:attribute name="fullName" type="xs:string"/>
+    <xs:attribute name="loginId" type="xs:string"/>
+    <xs:attribute name="password" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="combinationSearch">
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element ref="combination-search"/>
+        <xs:element ref="substructure"/>
+        <xs:element ref="composition"/>
+        <xs:element ref="id-search"/>
+        <xs:element ref="exact-search"/>
+        <xs:element ref="contributor-search"/>
+      </xs:choice>
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element ref="combination-search"/>
+        <xs:element ref="substructure"/>
+        <xs:element ref="composition"/>
+        <xs:element ref="id-search"/>
+        <xs:element ref="exact-search"/>
+        <xs:element ref="contributor-search"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="operation" type="operation"/>
+  </xs:complexType>
+
+  <xs:complexType name="compositionSearchType">
+    <xs:sequence>
+      <xs:element ref="composition-search" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="compositionSearchInput">
+    <xs:sequence>
+      <xs:element name="acetyl" type="range" minOccurs="0"/>
+      <xs:element name="hexA" type="range" minOccurs="0"/>
+      <xs:element name="hexN" type="range" minOccurs="0"/>
+      <xs:element name="hexNac" type="range" minOccurs="0"/>
+      <xs:element name="hexose" type="range" minOccurs="0"/>
+      <xs:element name="kdn" type="range" minOccurs="0"/>
+      <xs:element name="kdo" type="range" minOccurs="0"/>
+      <xs:element name="methyl" type="range" minOccurs="0"/>
+      <xs:element name="neuAc" type="range" minOccurs="0"/>
+      <xs:element name="neuGc" type="range" minOccurs="0"/>
+      <xs:element name="other" type="range" minOccurs="0"/>
+      <xs:element name="pentose" type="range" minOccurs="0"/>
+      <xs:element name="phosphate" type="range" minOccurs="0"/>
+      <xs:element name="sulfate" type="range" minOccurs="0"/>
+      <xs:element name="dHex" type="range" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="range">
+    <xs:sequence>
+      <xs:element name="max" type="xs:int" minOccurs="0"/>
+      <xs:element name="min" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exactSearchType">
+    <xs:sequence>
+      <xs:element ref="glycan-structure" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNION"/>
+      <xs:enumeration value="INTERSECTION"/>
+      <xs:enumeration value="DIFFERENCE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
