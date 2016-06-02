@@ -5,15 +5,114 @@
 	<name>Glyspace Glycan Registration API</name>
 	<description>Towards a unified glycomics infrastructure</description>
 
-	<groupId>org.glyspace</groupId>
-	<artifactId>api</artifactId>
-
-	<packaging>war</packaging>
-	
 	<organization>
 		<name>Glyspace</name>
 		<url>http://www.glyspace.org/</url>
 	</organization>
+
+	<groupId>org.glyspace</groupId>
+	<artifactId>api</artifactId>
+    <version>1.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<scm>
+		<connection>scm:git:https://github.com/glycoinfo/glyspace.git</connection>
+		<url>https://github.com/glycoinfo/glyspace.git</url>
+	</scm>
+	
+	<licenses>
+		<license>
+			<name>GNU Lesser Public License</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>
+			<distribution>repo</distribution>
+			<comments>The GNU Lesser Public License.</comments>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>rene</id>
+			<name>Rene</name>
+			<email>r...@ccrc.uga.edu</email>
+			<url>http://www.bmb.uga.edu/directory/rene-ranzinger</url>
+			<organization>Complex Carbohydrate Research Center University of Georgia</organization>
+			<organizationUrl>http://glycomics.ccrc.uga.edu/</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-9</timezone>
+			<properties>
+			</properties>
+		</developer>
+	</developers>
+	
+		<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.1</version>
+				<configuration>
+					<show>public</show>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.13</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-linkcheck-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.18</version>
+			</plugin>
+
+		</plugins>
+	</reporting>
+	
+	<repositories>
+		<repository>
+			<id>sonatype-snapshots</id>
+			<name>Sonatype</name>
+			<url>https://oss.sonatype.org/content/repositories/releases/</url>
+		</repository>
+		<repository>
+			<id>spring-snasphot</id>
+			<url>https://repo.spring.io/libs-snapshot</url>
+		</repository>
+		<repository>
+			<id>glycoinfo</id>
+			<url>http://nexus.glycoinfo.org/content/repositories/public</url>
+		</repository>
+	</repositories>
 	
 	<build>
 		<resources>
@@ -44,6 +143,7 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -243,21 +343,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<repositories>
-		<repository>
-			<id>sonatype-snapshots</id>
-			<name>Sonatype</name>
-			<url>https://oss.sonatype.org/content/repositories/releases/</url>
-		</repository>
-		<repository>
-			<id>spring-snasphot</id>
-			<url>https://repo.spring.io/libs-snapshot</url>
-		</repository>
-		<repository>
-			<id>glycoinfo</id>
-			<url>http://nexus.glycoinfo.org/content/repositories/public</url>
-		</repository>
-	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -519,15 +604,15 @@
 			<version>2.8.0-beta2</version>
 		</dependency>
 		<dependency>
-			<groupId>eurocarb</groupId>
-			<artifactId>glycanbuilder</artifactId>
-			<version>1.0rc</version>
+	<groupId>org.eurocarbdb.glycanbuilder</groupId>
+	<artifactId>wurcsextend</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>eurocarb</groupId>
-			<artifactId>glycoworkbench</artifactId>
-			<version>1.0rc</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eurocarbdb</groupId> -->
+<!-- 			<artifactId>glycoworkbench</artifactId> -->
+<!-- 			<version>0.0.1-SNAPSHOT</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>jena-arq</artifactId>
@@ -606,14 +691,4 @@
 			<version>2.1.2</version>
 		</dependency>
 	</dependencies>
-	<version>0.1</version>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>2.17</version>
-			</plugin>
-		</plugins>
-	</reporting>
 </project>
