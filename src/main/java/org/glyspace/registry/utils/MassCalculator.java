@@ -6,9 +6,11 @@ import org.eurocarbdb.MolecularFramework.io.GlycoCT.SugarImporterGlycoCTCondense
 import org.eurocarbdb.MolecularFramework.io.namespace.GlycoVisitorFromGlycoCT;
 import org.eurocarbdb.MolecularFramework.sugar.Sugar;
 import org.eurocarbdb.application.glycanbuilder.Glycan;
-import org.eurocarbdb.application.glycanbuilder.GlycoCTParser;
-import org.eurocarbdb.application.glycanbuilder.IonCloud;
-import org.eurocarbdb.application.glycanbuilder.MassOptions;
+import org.eurocarbdb.application.glycanbuilder.massutil.IonCloud;
+import org.eurocarbdb.application.glycanbuilder.massutil.MassOptions;
+//import org.eurocarbdb.application.glycanbuilder.GlycoCTParser;
+//import org.eurocarbdb.application.glycanbuilder.IonCloud;
+//import org.eurocarbdb.application.glycanbuilder.MassOptions;
 import org.eurocarbdb.resourcesdb.GlycanNamescheme;
 import org.eurocarbdb.resourcesdb.io.MonosaccharideConversion;
 import org.glyspace.registry.view.StructureParserValidator;
