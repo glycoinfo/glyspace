@@ -691,4 +691,18 @@
 			<version>2.1.2</version>
 		</dependency>
 	</dependencies>
+
+  <distributionManagement>
+    <repository>
+    <id>glycoinfo</id>
+    <name>Internal Releases</name>
+    <url>http://nexus.glycoinfo.org/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+    <id>glycoinfo</id>
+    <name>Internal Release Snapshots</name>
+    <url>http://nexus.glycoinfo.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
