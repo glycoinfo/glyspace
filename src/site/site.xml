@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="GlyTouCan ETL Batch">
+  <googleAnalyticsAccountId>UA-54566807-1</googleAnalyticsAccountId>
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.4</version>
+  </skin>
+  <custom>
+    <fluidoSkin>
+      <topBarEnabled>true</topBarEnabled>
+      <sideBarEnabled>true</sideBarEnabled>
+      <googleSearch>
+        <sitesearch>http://nexus.glycoinfo.org/content/sites/project/glytoucan/batch</sitesearch>
+      </googleSearch>
+    </fluidoSkin>
+  </custom>
+  <body>
+    <menu ref="reports" inherit="top"/>
+    <menu ref="modules"/>
+    <menu name="GlyTouCan Links">
+      <item href="http://glytoucan.org" name="The International Glycan Repository"/>
+      <item href="http://code.glytoucan.org" name="Manual And Code"/>
+      <item href="http://code.glytoucan.org/batch" name="Batch ETL and SparqlBeans"/>
+      <item href="http://www.wurcs-wg.org" name="WURCS"/>
+    </menu>
+  </body>
+</project>

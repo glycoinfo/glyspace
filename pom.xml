@@ -1,19 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<name>Glyspace Glycan Registration API</name>
+	<groupId>org.glyspace</groupId>
+	<artifactId>api</artifactId>
+  <version>1.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<parent>
+		<groupId>org.glytoucan</groupId>
+		<artifactId>pom-site</artifactId>
+		<version>0.24-SNAPSHOT</version>
+		<relativePath>../pom-site/pom.xml</relativePath>
+	</parent>
+  <name>glyspace library</name>
 	<description>Towards a unified glycomics infrastructure</description>
-
+  <url>http://www.glyspace.org/</url>
 	<organization>
 		<name>Glyspace</name>
 		<url>http://www.glyspace.org/</url>
 	</organization>
 
-	<groupId>org.glyspace</groupId>
-	<artifactId>api</artifactId>
-    <version>1.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+  <properties>
+    <java.version>1.7</java.version>
+    <changelog.fileUri>${changelog.github.fileUri}</changelog.fileUri>
+    <changelog.revision.fileUri>${changelog.revision.github.fileUri}</changelog.revision.fileUri>
+    <project.scm.url>https://github.com/glycoinfo/glyspace</project.scm.url>
+    <cobertura.base.package>${project.groupId}.${project.artifactId}</cobertura.base.package>
+    <inceptionYear>2014</inceptionYear>
+    <repository.domain>nexus.glycoinfo.org/content/sites/project/glyspace/${project.artifactId}</repository.domain>
+    <repository.user>glycoinfo</repository.user>
+    <repository.name>glyspace</repository.name>
+    <googleAnalyticsAccountId>UA-54566807-1</googleAnalyticsAccountId>
+  </properties>
 
 	<scm>
 		<connection>scm:git:https://github.com/glycoinfo/glyspace.git</connection>
